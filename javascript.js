@@ -2,7 +2,6 @@
 const flexContainer=document.querySelector(".flex-container");
 
 
-
 const grid= document.querySelector("button");
 grid.addEventListener("click", ()=>pixelGenerate(getPixelNumber()));
 
@@ -38,6 +37,8 @@ function pixelGenerate(pixelNumber){
         }
     }
 
+    draw();
+
 }
 
 function getPixelNumber(){
@@ -54,3 +55,57 @@ function removeColumn(){
         child=e.lastElementChild;
     }
 }
+///////////////////////////////////////////////////////
+
+
+function draw(){
+
+    let columns=flexContainer.getElementsByClassName("column");
+    let rightButtonDown=false;
+    flexContainer.addEventListener("mousedown",()=>rightButtonDown=true)
+    flexContainer.addEventListener("mouseup",()=>rightButtonDown=false)
+    for(let i=0;i<columns.length;i++){
+        columns[i].addEventListener("click",addColor)
+        columns[i].addEventListener("mouseover",(e)=>{
+            if(rightButtonDown){
+                return addColor(e);
+            }
+               })
+    }
+    // flexContainer.addEventListener("mouseDown",()=>{
+        
+    // })
+   
+}
+
+function eraser(){
+    return "";
+}
+
+
+
+function getUserChoice(){
+    const userChoice=document.querySelector("input[name='mod']:checked").value;
+    
+    if(userChoice==="randomColor"){
+        return "#"+Math.floor(Math.random()*16777215).toString(16);
+    }else if(userChoice==="eraser"){
+        return eraser();
+    }
+ return document.querySelector("#colorPicker").value;
+
+}
+
+function addColor(event){
+    event.target.style.backgroundColor=getUserChoice();
+}
+
+const clearAll=document.querySelector("#clearAll");
+clearAll.addEventListener("click",()=>{
+ const columns=document.querySelectorAll(".column")
+
+ for(let i=0;i<columns.length;i++){
+    columns[i].style.backgroundColor="";
+ }
+
+})

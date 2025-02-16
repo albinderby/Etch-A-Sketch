@@ -21,7 +21,24 @@
 
         <div class="nav">
          <input type="number" id="pixelNumber">
-         <button for="#pixelNumber" >Submit </button>   
+         <button for="#pixelNumber" >Submit </button> 
+         <ul>
+            <li>
+         <label for="colorPickerRadio">Choose A Color</label>
+           <label  for="colorPicker"><input type="radio" name="mod" id="colorPickerRadio" value="colorPicker" >
+           </label>
+             <input type="color" id="colorPicker">
+            </li>
+            <li>
+                <label for="randomColor">Random Color</label>
+                <input type="radio" name="mod" id="randomColor" value="randomColor">
+            </li>
+            <li>
+                <label for="eraser">Eraser</label>
+                <input type="radio" name="mod" id="eraser" value="eraser">
+            </li>
+                 </ul>
+                 <button id="clearAll">clear All</button>
         </div>
 
 </div>

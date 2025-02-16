@@ -22,3 +22,9 @@
     height:100%;
 }
 
+ul li{
+    list-style: none;
+}
+.container{
+    display:flex;
+}
